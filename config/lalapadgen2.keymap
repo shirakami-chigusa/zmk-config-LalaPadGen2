@@ -58,9 +58,9 @@
             key-positions = <10 11>;
         };
 
-        COMBO_CTRL_SPC {
+        CTRL_SPC {
             bindings = <&kp LC(SPACE)>;
-            key-positions = <10 32>;
+            key-positions = <10 33>;
         };
     };
 
