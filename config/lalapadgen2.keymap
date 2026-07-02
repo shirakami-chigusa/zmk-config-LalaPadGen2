@@ -57,11 +57,6 @@
             bindings = <&kp TAB>;
             key-positions = <10 11>;
         };
-
-        CTRL_SPC {
-            bindings = <&kp LC(SPACE)>;
-            key-positions = <10 33>;
-        };
     };
 
     keymap {
