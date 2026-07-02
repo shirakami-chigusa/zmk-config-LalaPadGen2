@@ -91,13 +91,13 @@
         TERTIARY_LAYER {
             display-name = "tertiary_layer";
             bindings = <
-&kp LG(ESCAPE)                 &kp LG(W)  &trans     &trans     &trans                     &trans         &trans         &trans          &trans          &kp BACKSPACE
-&kp LG(A)                      &kp LG(S)  &trans     &kp LG(F)  &trans                     &kp BACKSPACE  &kp RC(SPACE)  &kp LG(K)       &kp LG(L)       &kp ENTER
-&mt2 LG(LS(LEFT_SHIFT)) LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LG(B)                  &trans         &kp LG(M)      &trans          &kp UP_ARROW    &trans
-&trans                         &trans     &trans     &trans     &trans     &trans  &trans  &trans         &trans         &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
-                               &trans     &trans     &trans     &trans     &trans  &trans  &trans         &trans         &trans          &trans
-&trans                         &trans     &trans                                                                         &trans          &trans          &trans
-&trans                         &trans     &trans     &trans     &trans                     &trans         &trans         &trans          &trans          &trans
+&kp LG(ESCAPE)                 &kp LG(W)  &trans     &trans     &trans                     &trans         &trans     &trans          &trans          &kp BACKSPACE
+&kp LG(A)                      &kp LG(S)  &trans     &kp LG(F)  &trans                     &kp BACKSPACE  &trans     &kp LG(K)       &kp LG(L)       &kp ENTER
+&mt2 LG(LS(LEFT_SHIFT)) LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LG(B)                  &trans         &kp LG(M)  &trans          &kp UP_ARROW    &trans
+&trans                         &trans     &trans     &trans     &trans     &trans  &trans  &trans         &trans     &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
+                               &trans     &trans     &trans     &trans     &trans  &trans  &trans         &trans     &trans          &trans
+&trans                         &trans     &trans                                                                     &trans          &trans          &trans
+&trans                         &trans     &trans     &trans     &trans                     &trans         &trans     &trans          &trans          &trans
             >;
         };
 
