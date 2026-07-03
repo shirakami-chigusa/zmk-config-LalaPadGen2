@@ -137,7 +137,7 @@
             display-name = "tertiary_layer";
             bindings = <
 &kp LG(Q)                          &kp LG(W)  &trans     &trans     &trans                     &kp ESCAPE     &kp F6         &trans          &trans          &kp BACKSPACE
-&kp LG(A)                          &kp LG(S)  &trans     &kp LG(F)  &trans                     &kp BACKSPACE  &trans         &kp LG(K)       &kp LG(L)       &kp TAB
+&mt_hold LEFT_CONTROL LG(A)        &kp LG(S)  &trans     &kp LG(F)  &trans                     &kp BACKSPACE  &trans         &kp LG(K)       &kp LG(L)       &kp TAB
 &mt_hold LG(LS(LEFT_SHIFT)) LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LG(B)                  &trans         &kp LG(M)      &trans          &kp UP_ARROW    &trans
 &trans                             &trans     &trans     &trans     &trans     &trans  &trans  &trans         &kp LC(SPACE)  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
                                    &trans     &trans     &trans     &trans     &trans  &trans  &trans         &trans         &trans          &trans
