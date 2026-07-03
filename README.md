@@ -2,14 +2,14 @@
 
 LalaPad Gen2 の ZMK 設定です。
 
-## Mod-tap behaviors
+## Hold-tap behaviors
 
-`config/lalapadgen2.keymap` では、mod-tap 用に次の 2 種類の hold-tap behavior を定義しています。
+`config/lalapadgen2.keymap` では、hold-tap 用に次の behavior を定義しています。
 
-- `mt_hold`: hold 側を優先したいキー用
-- `mt_tap`: tap 側を優先したいキー用
-
-どちらも `tapping-term-ms = <200>`、`quick-tap-ms = <200>`、`require-prior-idle-ms = <125>` を使います。
+- `mt_hold`: mod-tap で hold 側を優先したいキー用
+- `mt_tap`: mod-tap で tap 側を優先したいキー用
+- `mt_hold_on_other`: mod-tap で、単独では tap を待ち、他キーが押された時点で hold にしたいキー用
+- `lt_hold_on_other`: layer-tap で、単独では tap を待ち、他キーが押された時点で hold にしたいキー用
 
 ## `mt_hold` behavior
 
@@ -27,7 +27,7 @@ mt_hold: mt_hold {
 };
 ```
 
-修飾キーとして使う意図が強いキーに割り当てます。ほかのキーとの同時押しでは hold 側に倒れやすいため、Ctrl や Space/Backspace 兼用キーなど、ショートカット用途を優先したい場所に向いています。
+修飾キーとして使う意図が強いキーに割り当てます。ほかのキーとの同時押しでは hold 側に倒れやすいため、ショートカット用途を優先したい場所に向いています。
 
 ## `mt_tap` behavior
 
@@ -54,4 +54,35 @@ mt_tap: mt_tap {
 
 これにより、`z y` のように素早くロール入力したときに、`Z` が Shift として扱われて `Y` になる誤爆を抑えます。右側も同様に、`-` の直後に別キーを入力したときの Shift 誤爆を抑えます。
 
-調整する場合は、まず `mt_tap` の `tapping-term-ms` を短くすると tap 判定が確定しやすくなります。Shift として成立しにくい場合は `tapping-term-ms` を少し伸ばします。
+## `mt_hold_on_other` / `lt_hold_on_other` behaviors
+
+`mt_hold_on_other` と `lt_hold_on_other` は Space 系キー用の hold-tap behavior です。`flavor = "hold-preferred"` にして、他キーが押された時点で hold 側に倒れるようにしています。
+
+```dts
+mt_hold_on_other: mt_hold_on_other {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <500>;
+    quick-tap-ms = <200>;
+    bindings = <&kp>, <&kp>;
+};
+
+lt_hold_on_other: lt_hold_on_other {
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    flavor = "hold-preferred";
+    tapping-term-ms = <500>;
+    quick-tap-ms = <200>;
+    bindings = <&mo>, <&kp>;
+};
+```
+
+Default layer では、2 つの Space 系キーに使っています。
+
+```dts
+&lt_hold_on_other 2 SPACE
+&mt_hold_on_other LEFT_CONTROL SPACE
+```
+
+`tap-unless-interrupted` は単独押下中に tap 側が先に確定しやすく、Space がキーアップ前に入力されるため使っていません。ここでは `hold-preferred` の tapping term を長めにして、単独の Space はキーアップまで待ちつつ、押している間に別キーが入力された場合はすぐ hold 側に切り替える設定にしています。
