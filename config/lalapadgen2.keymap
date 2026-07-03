@@ -142,7 +142,7 @@
         COMMAND_LAYER {
             display-name = "command_layer";
             bindings = <
-&kp LG(Q)                             &kp LG(W)  &trans     &trans     &trans                      &kp ESCAPE     &trans         &trans          &trans          &kp BACKSPACE
+&kp LG(Q)                             &kp LG(W)  &trans     &trans     &trans                      &kp ESCAPE     &kp F6         &kp F7          &trans          &kp BACKSPACE
 &mt_hold_on_other LEFT_CONTROL LG(A)  &kp LG(S)  &trans     &kp LG(F)  &trans                      &kp BACKSPACE  &trans         &kp LG(K)       &kp LG(L)       &kp TAB
 &mt_hold LG(LS(LEFT_SHIFT)) LG(Z)     &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LG(B)                   &trans         &kp LG(M)      &trans          &kp UP_ARROW    &trans
 &trans                                &trans     &trans     &trans     &trans     &trans  &kp F11  &trans         &kp LC(SPACE)  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
