@@ -2,67 +2,56 @@
 
 LalaPad Gen2 の ZMK 設定です。
 
-## `a_ctrl` behavior
+## Mod-tap behaviors
 
-`config/lalapadgen2.keymap` では、Default layer の `A` キーに専用の hold-tap behavior `a_ctrl` を割り当てています。
+`config/lalapadgen2.keymap` では、mod-tap 用に次の 2 種類の hold-tap behavior を定義しています。
+
+- `mt_hold`: hold 側を優先したいキー用
+- `mt_tap`: tap 側を優先したいキー用
+
+どちらも `tapping-term-ms = <200>`、`quick-tap-ms = <200>`、`require-prior-idle-ms = <125>` を使います。
+
+## `mt_hold` behavior
+
+`mt_hold` は `flavor = "hold-preferred"` の汎用 mod-tap behavior です。
 
 ```dts
-&a_ctrl LEFT_CONTROL A
-```
-
-目的は、ホームポジションの `A` を単押しでは `A`、他キーとの同時押しでは `Left Ctrl` として使うことです。通常の高速な文字入力で `a` が誤って Ctrl になることを抑えつつ、`Ctrl+Space`、`Ctrl+J`、`Ctrl+K` は成立しやすくしています。
-
-現在の設定は次の通りです。
-
-```dts
-a_ctrl: a_ctrl {
+mt_hold: mt_hold {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
     flavor = "hold-preferred";
     tapping-term-ms = <200>;
     quick-tap-ms = <200>;
     require-prior-idle-ms = <125>;
-    hold-trigger-key-positions = <16 17 34>;
     bindings = <&kp>, <&kp>;
 };
 ```
 
-`hold-trigger-key-positions` は、`A` を Ctrl として扱う相手キーを限定しています。
+修飾キーとして使う意図が強いキーに割り当てます。ほかのキーとの同時押しでは hold 側に倒れやすいため、Ctrl や Space/Backspace 兼用キーなど、ショートカット用途を優先したい場所に向いています。
 
-- `16`: `J`
-- `17`: `K`
-- `34`: 左手側の `Space`
+## `mt_tap` behavior
 
-そのため、`a` と他の文字キーを高速にロール入力した場合は tap として扱われやすく、上記のキーと組み合わせた場合だけ hold 側の `Left Ctrl` に倒れます。
-
-調整する場合は、まず `hold-trigger-key-positions` に対象キーを追加または削除します。`a` が Ctrl になりすぎる場合は対象キーを減らし、`Ctrl+Space` などが成立しにくい場合は `tapping-term-ms` を少し伸ばします。
-
-## `r_ctrl` behavior
-
-Default layer の右端 `Enter` キーには、専用の hold-tap behavior `r_ctrl` を割り当てています。
+`mt_tap` は `flavor = "tap-preferred"` の汎用 mod-tap behavior です。
 
 ```dts
-&r_ctrl RIGHT_CONTROL ENTER
-```
-
-目的は、単押しでは `Enter`、`A` または `E` との同時押しでは `Right Ctrl` として素早く反応させることです。`Ctrl+A` と `Ctrl+E` の発火遅延を抑えつつ、他のキーとの組み合わせで Enter が Ctrl になりすぎることを避けています。
-
-現在の設定は次の通りです。
-
-```dts
-r_ctrl: r_ctrl {
+mt_tap: mt_tap {
     compatible = "zmk,behavior-hold-tap";
     #binding-cells = <2>;
-    flavor = "hold-preferred";
+    flavor = "tap-preferred";
     tapping-term-ms = <200>;
     quick-tap-ms = <200>;
     require-prior-idle-ms = <125>;
-    hold-trigger-key-positions = <2 10>;
     bindings = <&kp>, <&kp>;
 };
 ```
 
-`hold-trigger-key-positions` は、右 `Enter` を Ctrl として扱う相手キーを限定しています。
+通常の文字入力で tap 側を優先したいキーに割り当てます。Default layer では左右の Shift 兼用キーに使っています。
 
-- `2`: `E`
-- `10`: `A`
+```dts
+&mt_tap LEFT_SHIFT Z
+&mt_tap RIGHT_SHIFT MINUS
+```
+
+これにより、`z y` のように素早くロール入力したときに、`Z` が Shift として扱われて `Y` になる誤爆を抑えます。右側も同様に、`-` の直後に別キーを入力したときの Shift 誤爆を抑えます。
+
+調整する場合は、まず `mt_tap` の `tapping-term-ms` を短くすると tap 判定が確定しやすくなります。Shift として成立しにくい場合は `tapping-term-ms` を少し伸ばします。
