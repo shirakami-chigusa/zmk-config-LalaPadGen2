@@ -81,7 +81,7 @@ lt_hold_on_other: lt_hold_on_other {
 Default layer では、2 つの Space 系キーに使っています。
 
 ```dts
-&lt_hold_on_other 2 SPACE
+&lt_hold_on_other COMMAND_LAYER SPACE
 &mt_hold_on_other LEFT_CONTROL SPACE
 ```
 
