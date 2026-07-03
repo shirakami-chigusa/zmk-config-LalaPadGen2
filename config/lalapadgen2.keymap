@@ -91,6 +91,11 @@
             bindings = <&kp ESCAPE>;
             key-positions = <0 1>;
         };
+
+        COMBO_CTRL {
+            bindings = <&kp LCTRL>;
+            key-positions = <10 33>;
+        };
     };
 
     keymap {
