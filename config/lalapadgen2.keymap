@@ -142,7 +142,7 @@
 &mt_hold LG(LS(LEFT_SHIFT)) LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)  &kp LG(B)                   &trans         &kp LG(M)      &trans          &kp UP_ARROW    &trans
 &trans                             &kp LG(A)  &trans     &trans     &trans     &trans  &kp F11  &trans         &kp LC(SPACE)  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW
                                    &trans     &trans     &trans     &trans     &trans  &trans   &trans         &trans         &trans          &trans
-&trans                             &trans     &trans                                                                          &trans          &trans          &trans
+&mkp MCLK                          &trans     &trans                                                                          &trans          &trans          &trans
 &trans                             &trans     &trans     &trans     &trans                      &trans         &trans         &trans          &trans          &trans
             >;
         };
