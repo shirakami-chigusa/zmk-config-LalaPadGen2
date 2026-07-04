@@ -159,6 +159,18 @@
 &trans   &trans   &trans   &trans   &trans                   &trans                         &trans                         &trans                         &trans                         &trans
             >;
         };
+
+        MODIFIER_LAYER {
+            bindings = <
+&kp ESCAPE        &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&kp LEFT_CONTROL  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&kp LEFT_SHIFT    &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+&trans            &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans            &trans  &trans                                                  &trans  &trans  &trans
+&trans            &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
     };
 
     conditional_layers { compatible = "zmk,conditional-layers"; };
