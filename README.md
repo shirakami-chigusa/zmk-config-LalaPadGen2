@@ -45,14 +45,16 @@ mt_tap: mt_tap {
 };
 ```
 
-通常の文字入力で tap 側を優先したいキーに割り当てます。Default layer では左右の Shift 兼用キーに使っています。
+通常の文字入力で tap 側を優先したいキーに割り当てます。現在の Default layer では、左右の Shift 兼用キーに `s_shift` と `l_shift`、Command 兼用キーに `d_cmd` と `k_cmd` を使っています。
 
 ```dts
-&mt_tap LEFT_SHIFT Z
-&mt_tap RIGHT_SHIFT MINUS
+&s_shift LEFT_SHIFT S
+&d_cmd LWIN D
+&k_cmd RWIN K
+&l_shift RIGHT_SHIFT L
 ```
 
-これにより、`z y` のように素早くロール入力したときに、`Z` が Shift として扱われて `Y` になる誤爆を抑えます。右側も同様に、`-` の直後に別キーを入力したときの Shift 誤爆を抑えます。
+これにより、`S` と `L` は単独押しで文字入力、反対側のアルファキーとの同時押しで Shift として動作します。`D` と `K` も同様に、単独押しで文字入力、同時押しで Command として動作します。
 
 ## `mt_hold_on_other` / `lt_hold_on_other` behaviors
 
