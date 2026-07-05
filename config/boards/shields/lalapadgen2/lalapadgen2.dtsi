@@ -135,6 +135,14 @@
                     &tp_to_pos  POS_TP_PINCH_L
                     >;
     };
+
+    trackpad_hscroll_cmd_right: trackpad_hscroll_cmd_right {
+        compatible = "zmk,input-processor-behaviors-consume";
+        #input-processor-cells = <0>;
+        type = <INPUT_EV_REL>;
+        codes = <INPUT_REL_HWHEEL>;
+        bindings = <&kp LG(RIGHT_ARROW)>;
+    };
     
     zip_dynamic_xy_scaler: zip_dynamic_xy_scaler {
         compatible = "zmk,input-processor-dynamic-scaler";
@@ -171,6 +179,15 @@
                                 <&zip_dynamic_xy_scaler>,
                                 <&zip_dynamic_scroll_scaler>;
         };
+        layer3_hscroll_cmd_right {
+            layers = <3>;
+            input-processors =  <&trackpad_key_behaviors_R>,
+                                <&trackpad_hscroll_cmd_right>,
+                                <&zip_xy_scaler 1 12>,
+                                <&zip_scroll_scaler 1 12>,
+                                <&zip_dynamic_xy_scaler>,
+                                <&zip_dynamic_scroll_scaler>;
+        };
     };
     trackpad_listener_L: trackpad_listener_L {
         compatible = "zmk,input-listener";
@@ -186,6 +203,15 @@
             input-processors =  <&trackpad_key_behaviors_L>,
                                 <&zip_xy_scaler 1 15>,
                                 <&zip_scroll_scaler 1 40>,
+                                <&zip_dynamic_xy_scaler>,
+                                <&zip_dynamic_scroll_scaler>;
+        };
+        layer3_hscroll_cmd_right {
+            layers = <3>;
+            input-processors =  <&trackpad_key_behaviors_L>,
+                                <&trackpad_hscroll_cmd_right>,
+                                <&zip_xy_scaler 1 5>,
+                                <&zip_scroll_scaler 1 12>,
                                 <&zip_dynamic_xy_scaler>,
                                 <&zip_dynamic_scroll_scaler>;
         };
