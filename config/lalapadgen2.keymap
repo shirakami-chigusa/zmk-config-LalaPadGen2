@@ -131,6 +131,13 @@
             layers = <0>;
             timeout-ms = <35>;
         };
+
+        COMBO_BACKSPACE {
+            bindings = <&kp BACKSPACE>;
+            key-positions = <26 27>;
+            layers = <0>;
+            timeout-ms = <35>;
+        };
     };
 
     keymap {
